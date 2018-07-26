@@ -17,7 +17,6 @@ namespace MagicDestroyers.Characters.Spellcasters
         private readonly LightLeatherVest DefaultBodyArmor = new LightLeatherVest();
         private readonly Staff DefaultWeapon = new Staff();
 
-
         private int _abilityPoints;
         private int _healthPoints;
         private int _level;
