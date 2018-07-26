@@ -65,7 +65,7 @@ namespace MagicDestroyers.Characters.Spellcasters
                 }
             }
         }
-
+         
         public int AbilityPoints
         {
             get
