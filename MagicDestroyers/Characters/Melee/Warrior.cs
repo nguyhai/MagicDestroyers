@@ -5,7 +5,7 @@ using System;
 
 namespace MagicDestroyers.Characters.Melee
 {
-    public class Warrior : Character
+    public class Warrior : Melee
     {
         // The This keyword, lets us have access to everything in the class. It points to that SPECIFIC INSTANCE of that class. It's main purpose is to help distinguist between objects that have the same name. 
         // Backing fields. Private just means it is only accessible within this class and no where else. 
@@ -25,11 +25,6 @@ namespace MagicDestroyers.Characters.Melee
         private readonly Chainlink DefaultBodyArmor = new Chainlink();
         private readonly Axe DefaultWeapon = new Axe();
 
-        private int _abilityPoints;
-        private int _healthPoints;
-        private int _level;
-
-        private Faction _faction;
 
         private Chainlink _bodyArmor;
         private Axe _weapon;
@@ -40,44 +35,7 @@ namespace MagicDestroyers.Characters.Melee
         // Do we always need to do this? No. Properties, usually for external. 
         // C Sharp auto creates backing fields if you use auto properties. 
 
-        //public int HealthPoints
-        //{
-        //    get
-        //    {
-        //        return _healthPoints;
-        //    }
-        //    set
-        //    {
-        //        if (value >= 0)
-        //        {
-        //            _healthPoints = value;
-        //        }
-        //        else
-        //        {
-        //            throw new ArgumentOutOfRangeException("HealthPoints", $"Healthpoints cannot be set to a negative number for {_name}");
-        //        }
-        //    }
-        //}
 
-
-        public int AbilityPoints
-        {
-            get
-            {
-                return _abilityPoints;
-            }
-            set
-            {
-                if (value >= 0 && value <= 50)
-                {
-                    _abilityPoints = value;
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException(string.Empty, $"Ability Points cannot be Negative or over 10 for {base.Name}");
-                }
-            }
-        }
 
         public Chainlink BodyArmor
         {

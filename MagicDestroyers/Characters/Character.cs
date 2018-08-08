@@ -62,7 +62,7 @@ namespace MagicDestroyers.Characters
                 }
                 else
                 {
-                    // throw new ArgumentOutOfRangeException(string.Empty, $"Level cannot be Negative for {base.Name}");
+                   throw new ArgumentOutOfRangeException(string.Empty, $"Level cannot be Negative for {Name}");
                 }
             }
         }
