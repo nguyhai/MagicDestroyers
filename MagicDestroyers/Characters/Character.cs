@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Enumerations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,11 @@ namespace MagicDestroyers.Characters
 {
     public class Character
     {
-        private int _healthPoints;
-        private int _weight;
-        protected int _age;
+        // Common fields between the characters - This is what we are extacting from the classes we have and putting it here because all the characters have it in common
+        private Faction _faction;
         private string _name;
+        private int _level;
+        private int _healthPoints;
         
         public virtual void Move(int pauseAmount)
         {
@@ -46,37 +48,34 @@ namespace MagicDestroyers.Characters
             }
         }
 
-        public int Weight
+        public int Level
         {
             get
             {
-                return _weight;
+                return _level;
             }
             set
             {
-
-                    _weight = value;
-
-            }
-        }
-
-        public virtual int Age
-        {
-            get
-            {
-                return _age;
-            }
-            set
-            {
-                if (value >= 18 && value <= 45)
+                if (value >= 0)
                 {
-                    _age = value;
-
+                    _level = value;
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException(string.Empty, "Please use age between 18 and 45");
+                    // throw new ArgumentOutOfRangeException(string.Empty, $"Level cannot be Negative for {base.Name}");
                 }
+            }
+        }
+
+        public Faction Faction
+        {
+            get
+            {
+                return _faction;
+            }
+            set
+            {
+                _faction = value;
             }
         }
 
@@ -89,13 +88,13 @@ namespace MagicDestroyers.Characters
 
         }
 
-        public Character(int healthPoints, int weight, int age)
+        public Character(int healthPoints)
         {
             HealthPoints = healthPoints;
-            Weight = weight;
-            Age = age;
+
         }
 
+        // ----------------------------------------------------------------------------------------------------------------------------------
         // The difference between the Base and This keyword. The base keyword allows us to access to ALL non-private members of the inherited class. This allows us to reuse constructors. 
         // This keyword gives us access to all members of our class. 
 

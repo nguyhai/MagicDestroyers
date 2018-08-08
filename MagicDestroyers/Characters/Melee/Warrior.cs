@@ -20,13 +20,10 @@ namespace MagicDestroyers.Characters.Melee
         private const int DefaultHealthPoints = 120;
         private const int DefaultAbilityPoints = 10;
         private const Faction DefaultFaction = Faction.Melee;
+
         // We cant use const for objects, so in this case, we can use the readonly keyword
         private readonly Chainlink DefaultBodyArmor = new Chainlink();
         private readonly Axe DefaultWeapon = new Axe();
-
-        //private int _height;
-        //private int _weight;
-        //private int _age;
 
         private int _abilityPoints;
         private int _healthPoints;
@@ -82,25 +79,6 @@ namespace MagicDestroyers.Characters.Melee
             }
         }
 
-        public int Level
-        {
-            get
-            {
-                return _level;
-            }
-            set
-            {
-                if (value >= 0)
-                {
-                    _level = value;
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException(string.Empty, $"Level cannot be Negative for {base.Name}");
-                }
-            }
-        }
-
         public Chainlink BodyArmor
         {
             get
@@ -124,17 +102,7 @@ namespace MagicDestroyers.Characters.Melee
                 _weapon = value;
             }
         }
-        public Faction Faction
-        {
-            get
-            {
-                return _faction;
-            }
-            set
-            {
-                _faction = value;
-            }
-        }
+
 
         // Constructors -----------------------------------
 
@@ -174,12 +142,11 @@ namespace MagicDestroyers.Characters.Melee
             }
         }
 
-        public Warrior(int healthPoints, int weight, int age)
-            :base(healthPoints, weight, age)
+        public Warrior(int healthPoints)
+            :base(healthPoints)
         {
 
         }
-
 
         // Methods ----------------------------------------
 
@@ -202,10 +169,5 @@ namespace MagicDestroyers.Characters.Melee
             base.Move(pauseAmount);
             Console.WriteLine("I just moved 10 times, I am a warrior");
         }
-
-
-
-
-
     }
 }

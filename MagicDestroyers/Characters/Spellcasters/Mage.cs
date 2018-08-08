@@ -27,26 +27,6 @@ namespace MagicDestroyers.Characters.Spellcasters
         private ClothRobe _bodyArmor;
         private Staff _weapon;
 
-        public override int Age
-        {
-            get
-            {
-                return _age;
-            }
-            set
-            {
-                if (value >= 18 && value <= 45)
-                {
-                    _age = value;
-
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException(string.Empty, "Please use age between 18 and 45");
-                }
-            }
-        }
-        
         public int HealthPoints
         {
             get
