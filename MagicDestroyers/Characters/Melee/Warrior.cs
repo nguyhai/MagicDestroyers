@@ -100,11 +100,6 @@ namespace MagicDestroyers.Characters.Melee
             }
         }
 
-        public Warrior(int healthPoints)
-            :base(healthPoints)
-        {
-
-        }
 
         // Methods ----------------------------------------
 

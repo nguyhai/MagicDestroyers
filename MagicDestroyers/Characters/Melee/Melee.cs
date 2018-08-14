@@ -1,4 +1,6 @@
-﻿namespace MagicDestroyers.Characters.Melee
+﻿using System;
+
+namespace MagicDestroyers.Characters.Melee
 {
     public class Melee : Character
     {
