@@ -23,11 +23,11 @@ namespace MagicDestroyers
 
             // Instantiating our objects, if no value is provided, default values are used (these are taken in from the constructor)
 
-            //Warrior warrior = new Warrior("Hai", 10, 150, Faction.Melee);
-            //warrior.Move(500);
+            Warrior warrior = new Warrior("Hai", 10, 150, Faction.Melee);
+            warrior.Move(500);
 
-            //Mage mage = new Mage("Huy", 20, 150, Faction.Spellcaster);
-            //mage.Move(500);
+            Mage mage = new Mage("Huy", 20, 150, Faction.Spellcaster);
+            mage.Move(500);
 
             //Tools.ColorfulWriteLine(warrior.AbilityPoints.ToString(), ConsoleColor.DarkCyan);
 

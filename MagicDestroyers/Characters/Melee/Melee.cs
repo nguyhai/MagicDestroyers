@@ -20,6 +20,7 @@ namespace MagicDestroyers.Characters.Melee
                 }
                 else
                 {
+
                     throw new ArgumentOutOfRangeException(string.Empty, $"Ability Points cannot be Negative or over 10 for {base.Name}");
                 }
             }

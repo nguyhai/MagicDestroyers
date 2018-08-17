@@ -176,6 +176,7 @@ namespace MagicDestroyers.Characters.Spellcasters
             throw new NotImplementedException();
         }
 
+        // Using override method here. We are overriding virual method in the base class. 
         public override void Move(int pauseAmount)
         {
             base.Move(pauseAmount);

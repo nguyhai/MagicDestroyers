@@ -21,6 +21,8 @@ namespace MagicDestroyers.Characters.Melee
         private const int DefaultAbilityPoints = 10;
         private const Faction DefaultFaction = Faction.Melee;
 
+        // Extracted common properties to higher abstract level
+
         // We cant use const for objects, so in this case, we can use the readonly keyword
         private readonly Chainlink DefaultBodyArmor = new Chainlink();
         private readonly Axe DefaultWeapon = new Axe();
@@ -61,7 +63,6 @@ namespace MagicDestroyers.Characters.Melee
             }
         }
 
-
         // Constructors -----------------------------------
 
         // EXAMPLES
@@ -69,11 +70,6 @@ namespace MagicDestroyers.Characters.Melee
         //    : this(170, 70) // This gives values, and then executes the constructors. 
         //{
         //    //Weapon = new Axe(); // This is how we equip our weapon. We instantiate the object within our constructor, giving our character their weapon and whatever stats it has on it. 
-
-        public Warrior()
-            :this(DefaultName, DefaultLevel)
-        {
-        }
 
         public Warrior(string name, int level)
             :this(name, level, DefaultHealthPoints, DefaultFaction)
@@ -89,7 +85,7 @@ namespace MagicDestroyers.Characters.Melee
             Faction = faction;
             BodyArmor = DefaultBodyArmor;
             Weapon = DefaultWeapon;
-    
+
             if (Faction == Faction.Melee)
             {
                 HealthPoints = 120;
@@ -99,7 +95,6 @@ namespace MagicDestroyers.Characters.Melee
                 HealthPoints = 100;
             }
         }
-
 
         // Methods ----------------------------------------
 
@@ -117,6 +112,8 @@ namespace MagicDestroyers.Characters.Melee
         {
             throw new NotImplementedException();
         }
+
+        // Using the override keyword, we are overriding a virtual method here
         public override void Move(int pauseAmount)
         {
             base.Move(pauseAmount);
