@@ -4,7 +4,7 @@ namespace MagicDestroyers.Characters.Melee
 {
     public class Melee : Character
     {
-        private int _abilityPoints;
+        private int _abilityPoints; 
 
         public int AbilityPoints
         {
