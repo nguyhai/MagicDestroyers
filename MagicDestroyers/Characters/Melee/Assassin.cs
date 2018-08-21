@@ -6,7 +6,7 @@ using System;
 
 namespace MagicDestroyers.Characters.Melee
 {
-    public class Assassin
+    public class Assassin : Melee
     {
         private const string DefaultName = "Bob";
         private const int DefaultLevel = 1;

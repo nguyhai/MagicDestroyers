@@ -16,9 +16,8 @@ namespace MagicDestroyers.Characters
         private string _name;
         private int _level;
         private int _healthPoints;
-        
 
-
+        // Any validation here will be the default. If you have different validation for properties (like health for mages), that needs to be in that specific class and overrided. 
         public string Name
         {
             get

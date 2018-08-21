@@ -14,7 +14,7 @@ namespace MagicDestroyers.Characters.Melee
         // Protected Internal is a mix of both protected and internal
         // Static - shared between the instance, accessed from the class. Static variables, static methods, static classes. 
 
-        // Constants
+        // Constants - Leaving some of the constants here, every character has different constatns
         private const string DefaultName = "Bob";
         private const int DefaultLevel = 1;
         private const int DefaultHealthPoints = 120;
@@ -27,7 +27,6 @@ namespace MagicDestroyers.Characters.Melee
         private readonly Chainlink DefaultBodyArmor = new Chainlink();
         private readonly Axe DefaultWeapon = new Axe();
 
-
         private Chainlink _bodyArmor;
         private Axe _weapon;
 
@@ -36,8 +35,6 @@ namespace MagicDestroyers.Characters.Melee
         // Think of it like a barrier, so that the outside cant just go and change the value of _height directly. Get is Read, Set is Write
         // Do we always need to do this? No. Properties, usually for external. 
         // C Sharp auto creates backing fields if you use auto properties. 
-
-
 
         public Chainlink BodyArmor
         {
@@ -71,6 +68,8 @@ namespace MagicDestroyers.Characters.Melee
         //{
         //    //Weapon = new Axe(); // This is how we equip our weapon. We instantiate the object within our constructor, giving our character their weapon and whatever stats it has on it. 
 
+        // Our default constructor is in the character class. 
+
         public Warrior(string name, int level)
             :this(name, level, DefaultHealthPoints, DefaultFaction)
         {
@@ -83,6 +82,7 @@ namespace MagicDestroyers.Characters.Melee
             HealthPoints = healthPoints;
             AbilityPoints = DefaultAbilityPoints;
             Faction = faction;
+
             BodyArmor = DefaultBodyArmor;
             Weapon = DefaultWeapon;
 
