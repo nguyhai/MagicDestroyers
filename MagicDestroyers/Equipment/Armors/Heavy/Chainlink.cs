@@ -6,34 +6,20 @@ using System.Threading.Tasks;
 
 namespace MagicDestroyers.Equipment.Armors.Heavy
 {
-    public class Chainlink
+    public class Chainlink : Heavy
     {
-        private int _armorPoints;
-        
+        private const int DefaultArmorPoints = 10;
+
+        // Constructors, 1 default and one that takes an argument. The default one will take DefaultArmorPoints
         public Chainlink()
+            : this(DefaultArmorPoints)
         {
 
         }
 
-        public int ArmorPoints
+        public Chainlink(int armorPoints)
         {
-            get
-            {
-                return _armorPoints;
-            }
-            set
-            {
-                if (value >= 1 )
-                {
-                    _armorPoints = value;
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException(string.Empty, $"The amount of armor points cannot be less than 1");
-                }
-
-                
-            }
+            ArmorPoints = armorPoints;
         }
     }
 }

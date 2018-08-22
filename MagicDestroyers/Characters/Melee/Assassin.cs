@@ -10,103 +10,15 @@ namespace MagicDestroyers.Characters.Melee
     {
         private const string DefaultName = "Bob";
         private const int DefaultLevel = 1;
-        private const int DefaultHealthPoints = 120;
+        private const int DefaultHealthPoints = 100;
         private const int DefaultAbilityPoints = 10;
         private const Faction DefaultFaction = Faction.Melee;
 
         private readonly LightLeatherVest DefaultBodyArmor = new LightLeatherVest();
         private readonly Sword DefaultWeapon = new Sword();
 
-        private int _height;
-        private int _weight;
-        private int _abilityPoints;
-        private int _healthPoints;
-        private int _level;
-        private Faction _faction;
-        private string _name;
         private LightLeatherVest _bodyArmor;
         private Sword _weapon;
-
-        public int HealthPoints
-        {
-            get
-            {
-                return _healthPoints;
-            }
-            set
-            {
-                if (value >= 0)
-                {
-                    _healthPoints = value;
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException("HealthPoints", $"Healthpoints cannot be set to a negative number for {_name}");
-                }
-            }
-        }
-
-        public int AbilityPoints
-        {
-            get
-            {
-                return _abilityPoints;
-            }
-            set
-            {
-                if (value >= 0)
-                {
-                    _abilityPoints = value;
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException(string.Empty, $"Ability Points cannot be Negative or over 10 for {_name}");
-                }
-            }
-        }
-
-        public int Level
-        {
-            get
-            {
-                return _level;
-            }
-            set
-            {
-                if (value >= 0)
-                {
-                    _level = value;
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException(string.Empty, $"Level cannot be Negative for {_name}");
-                }
-            }
-        }
-
-        public string Name
-        {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                _name = value;
-            }
-        }
-
-        public Faction Faction
-        {
-            get
-            {
-                return _faction;
-            }
-            set
-            {
-                _faction = value;
-            }
-        }
 
         public LightLeatherVest BodyArmor
         {

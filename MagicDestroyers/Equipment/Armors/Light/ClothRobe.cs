@@ -6,31 +6,20 @@ using System.Threading.Tasks;
 
 namespace MagicDestroyers.Equipment.Armors.Light
 {
-    public class ClothRobe
+    public class ClothRobe : Light
     {
-        private int _armorPoints;
-        
+        private const int DefaultArmorPoints = 3;
+
+        // Constructors, 1 default and one that takes an argument. The default one will take DefaultArmorPoints
         public ClothRobe()
+            : this(DefaultArmorPoints)
         {
 
         }
-        public int ArmorPoints
+
+        public ClothRobe(int armorPoints)
         {
-            get
-            {
-                return _armorPoints;
-            }
-            set
-            {
-                if (value >= 1)
-                {
-                    _armorPoints = value;
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException(string.Empty, $"The amount of armor points cannot be less than 1");
-                }
-            }
+            ArmorPoints = armorPoints;
         }
     }
 }
