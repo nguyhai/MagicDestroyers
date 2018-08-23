@@ -12,11 +12,8 @@ namespace MagicDestroyers.Equipment.Weapons.Blunt
         
         public Hammer()
         {
-            _damage = 10;
+            Damage = 10;
         }
-
-
-
 
         public void Stun()
         {

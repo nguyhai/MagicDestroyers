@@ -70,6 +70,7 @@ namespace MagicDestroyers.Characters.Melee
 
         // Our default constructor is in the character class. 
 
+        // Constructor chaining here, we take two params, then push it all to the constructor witht he most arguments using the this keyword
         public Warrior(string name, int level)
             :this(name, level, DefaultHealthPoints, DefaultFaction)
         {

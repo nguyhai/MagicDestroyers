@@ -29,6 +29,10 @@ namespace MagicDestroyers
             Mage mage = new Mage("Huy", 20, 150, Faction.Spellcaster);
             mage.Move(500);
 
+            Assassin assasin = new Assassin("Tester1", 20);
+
+
+
             //Tools.ColorfulWriteLine(warrior.AbilityPoints.ToString(), ConsoleColor.DarkCyan);
 
 

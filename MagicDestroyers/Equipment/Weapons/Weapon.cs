@@ -16,7 +16,7 @@ namespace MagicDestroyers.Equipment.Weapons
             {
                 return _damage;
             }
-            private set
+            set
             {
                 if (value >= 1)
                 {
