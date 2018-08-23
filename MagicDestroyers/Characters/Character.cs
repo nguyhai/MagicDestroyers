@@ -115,5 +115,27 @@ namespace MagicDestroyers.Characters
         // Virtual, changing the implementation of properties or methods in the derived class, this allows for us to etend the property or method. 
         // With properties, you can redefine the properties for validation
 
+        // Abstraction-----------------------------------------------------------------------------------------------------------------------
+        // The main purpose is to reudce the complexity of your code. Focus only on relevant issues of the program. 
+        // Hide info from the client and show only necessary details.
+        // Abstraction is one of the principle of object oriented programming. 
+        // It is used to display only necessary and essential features of an object to ouside the world.
+        // Means displaying what is necessary and encapsulate the unnecessary things to outside the world.Hiding can be achieved by using "private" access modifiers. 
+
+        // Can use abstract classes and interfaces to achieve this. 
+        // For example, having an interface will a few properties, will force us to implement them and make them non-optional.
+        // Lets say you make an IMakeFire interface. You just need to know that it makes the fire, not how exactly it is done. 
+        // Any class that implements this interface will know how to make fire. 
+
+        // Interfaces------------------------------------------------------------------------------------------------------------------------
+        // An interface contains definitions for a group of related functionalities that a class or a struct can implement.
+        // By using interfaces, you can, for example, include behavior from multiple sources in a class. ... 
+        // In that way, an interface in C# is similar to an abstract class in which all the methods are abstract.
+        // The interface defines only the signature.
+        // However, a class or struct can implement multiple interfaces, but a class can inherit only a single class, abstract or not. 
+        // Therefore, by using interfaces, you can include behavior from multiple sources in a class.
+        // So basically, if you have an interface, with properties and methods, any class that implements the interface will be foreced to use the members in the interface. 
+        // Interfaces can contain methods, properties, events, indexers, or any combination of those four member types.
+
     }
 }

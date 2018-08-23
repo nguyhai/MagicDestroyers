@@ -8,10 +8,18 @@ namespace MagicDestroyers.Equipment.Weapons.Sharp
 {
     public class Sword : Sharp
     {
-        
+
+        private const int DefaultDamagePoints = 10;
+
         public Sword()
+            :this(DefaultDamagePoints)
         {
-            Damage = 10; // We only want to set the damage to 10 for now. 
+
+        }
+
+        public Sword(int damagePoints)
+        {
+            Damage = damagePoints;
         }
 
         public void Bloodthirst()

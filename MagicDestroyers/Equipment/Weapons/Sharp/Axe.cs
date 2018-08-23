@@ -8,9 +8,17 @@ namespace MagicDestroyers.Equipment.Weapons.Sharp
 {
     public class Axe : Sharp
     {
+        private const int DefaultDamagePoints = 10;
+
         public Axe()
+            :this(DefaultDamagePoints)
         {
-            Damage = 10; // We only want to set the damage to 10 for now. 
+
+        }
+
+        public Axe(int damagePoints)
+        {
+            Damage = damagePoints;
         }
 
         public void HackNSlash()

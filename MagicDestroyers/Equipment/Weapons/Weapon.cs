@@ -24,6 +24,7 @@ namespace MagicDestroyers.Equipment.Weapons
                 }
                 else
                 {
+                    // String interpolation, verbatim string @
                     throw new ArgumentOutOfRangeException(string.Empty, $"Damage cannot be less than 1");
                 }
             }

@@ -8,11 +8,17 @@ namespace MagicDestroyers.Equipment.Weapons.Blunt
 {
     public class Hammer : Blunt
     {
-        
+        private const int DefaultDamagePoints = 10;
         
         public Hammer()
+            :this(DefaultDamagePoints)
         {
-            Damage = 10;
+            
+        }
+
+        public Hammer(int damagePoints)
+        {
+            Damage = damagePoints;
         }
 
         public void Stun()
