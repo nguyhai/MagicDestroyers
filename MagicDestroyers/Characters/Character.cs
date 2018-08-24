@@ -1,4 +1,5 @@
 ﻿using Enumerations;
+using MagicDestroyers.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MagicDestroyers.Characters
 {
-    public class Character
+    public abstract class Character: ICalculator
     {
         // Protected access modifier, used to share between base and derived classes. Not for fields, those should be private.
         // Common fields between the characters - This is what we are extacting from the classes we have and putting it here because all the characters have it in common
@@ -105,6 +106,15 @@ namespace MagicDestroyers.Characters
             }
         }
 
+        public virtual void Addition(int firstNumber, int secondNumber)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
+
         // ----------------------------------------------------------------------------------------------------------------------------------
         // When a class inherits from another class, it inherits all it's members, this includes fields, properties, and methods. It cant inherit constructors, but it can REUSE them using the base keyword.  
 
@@ -136,6 +146,10 @@ namespace MagicDestroyers.Characters
         // Therefore, by using interfaces, you can include behavior from multiple sources in a class.
         // So basically, if you have an interface, with properties and methods, any class that implements the interface will be foreced to use the members in the interface. 
         // Interfaces can contain methods, properties, events, indexers, or any combination of those four member types.
+
+        // With an Interface, the Interface provides the "What" part, and the implementing class provides the "How" part
+
+
 
     }
 }

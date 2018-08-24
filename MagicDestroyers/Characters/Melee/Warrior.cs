@@ -1,11 +1,12 @@
 ﻿using Enumerations;
 using MagicDestroyers.Equipment.Armors.Heavy;
 using MagicDestroyers.Equipment.Weapons.Sharp;
+using MagicDestroyers.Interfaces;
 using System;
 
 namespace MagicDestroyers.Characters.Melee
 {
-    public class Warrior : Melee
+    public class Warrior : Melee, ICalculator // Add comma, add interfaces
     {
         // The This keyword, lets us have access to everything in the class. It points to that SPECIFIC INSTANCE of that class. It's main purpose is to help distinguist between objects that have the same name. 
         // Backing fields. Private just means it is only accessible within this class and no where else. 
@@ -14,7 +15,7 @@ namespace MagicDestroyers.Characters.Melee
         // Protected Internal is a mix of both protected and internal
         // Static - shared between the instance, accessed from the class. Static variables, static methods, static classes. 
 
-        // Constants - Leaving some of the constants here, every character has different constatns
+        // Constants - Leaving some of the constants here, every character has different constants
         private const string DefaultName = "Bob";
         private const int DefaultLevel = 1;
         private const int DefaultHealthPoints = 120;
@@ -119,6 +120,12 @@ namespace MagicDestroyers.Characters.Melee
         {
             base.Move(pauseAmount);
             Console.WriteLine("I just moved 10 times, I am a warrior");
+        }
+
+        // You can right click the interface, and implement it
+        public override void Addition(int firstNumber, int secondNumber)
+        {
+            Console.WriteLine(firstNumber + secondNumber);
         }
     }
 }

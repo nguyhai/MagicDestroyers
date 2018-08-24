@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MagicDestroyers.Characters.Spellcasters
 {
@@ -6,8 +10,6 @@ namespace MagicDestroyers.Characters.Spellcasters
     {
         private int _manaPoints;
 
-        // For mages, we will use Mana Points instead of Ability points. Everything in our characters are going to inherit stuff from both the character + melee/spellcaster classes
-        // Properties
         public int ManaPoints
         {
             get
@@ -22,13 +24,15 @@ namespace MagicDestroyers.Characters.Spellcasters
                 }
                 else
                 {
+
                     throw new ArgumentOutOfRangeException(string.Empty, $"Ability Points cannot be Negative or over 10 for {base.Name}");
-                    
                 }
             }
         }
 
-
-
+        public override void Addition(int firstNumber, int secondNumber)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

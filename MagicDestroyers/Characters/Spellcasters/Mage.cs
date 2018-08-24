@@ -1,12 +1,30 @@
 ﻿using Enumerations;
+using MagicDestroyers.Characters.Melee;
 using MagicDestroyers.Equipment.Armors.Light;
 using MagicDestroyers.Equipment.Weapons.Blunt;
+using MagicDestroyers.Interfaces;
 using System;
 
 namespace MagicDestroyers.Characters.Spellcasters
 {
-    public class Mage: Spellcaster
+    // You can implement as many interfaces ase you want, but you can only inherit from ONE class. 
+    public class Mage: Spellcaster, ICalculator, ISpellcaster
     {
+        private int _mana;
+        private Spell _mySpell;
+
+        public Spell MySpell
+        {
+            get
+            {
+                return _mySpell;
+            }
+            set
+            {
+                _mySpell = value;
+            }
+        }
+
         // Constants
         private const string DefaultName = "Bob";
         private const int DefaultLevel = 1;
@@ -44,10 +62,26 @@ namespace MagicDestroyers.Characters.Spellcasters
             }
         }
 
+        public int Mana
+        {
+            get
+            {
+                return _mana;
+            }
+
+            set
+            {
+                _mana = value;
+            }
+        }
+
         // Constructors
         public Mage()
             : this("Garen", 1)
         {
+            // instantiating spell object
+            MySpell = new Spell();
+            Mana = 100;
         }
 
         public Mage(string name, int level)
@@ -98,6 +132,22 @@ namespace MagicDestroyers.Characters.Spellcasters
             Console.WriteLine("I just moved 10 times, I am a mage");
         }
 
+        // In the implementing class, it cares about HOW it happens, and this is where we put our implementation. 
+        // It expects 2 numbers. The interface doesn't care about "How" this happens. It just care about telling the class to take the two numbers and do something with it (in this case, "Addition" as the interface name should define what it does). 
+        public override void Addition(int firstNumber, int secondNumber)
+        {
+            int sum = firstNumber + secondNumber;
+            int modifiedSum = sum + 123;
+            Console.WriteLine(modifiedSum - 123);
+        }
 
+
+        
+        public void CastSpell(Warrior warrior)
+        {
+            // The warrior's healthpoints are subtracted by the spelldamage. 
+            warrior.HealthPoints = warrior.HealthPoints - MySpell.Damage;
+            _mana = Mana - MySpell.ManaCost;
+        }
     }
 }

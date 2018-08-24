@@ -26,7 +26,9 @@ namespace MagicDestroyers.Characters.Melee
             }
         }
 
-
-
+        public override void Addition(int firstNumber, int secondNumber)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
