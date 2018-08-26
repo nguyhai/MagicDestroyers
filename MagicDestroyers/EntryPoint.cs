@@ -12,6 +12,11 @@ namespace MagicDestroyers
     {
         static void Main()
         {
+            Random rng = new Random();
+
+            int currentMelee = 0;
+            int currentSpellcaster = 0;
+
             bool gameOver = false;
 
             List<Character> characters = new List<Character>()
@@ -49,20 +54,49 @@ namespace MagicDestroyers
 
             while (!gameOver)
             {
+                currentMelee = rng.Next(0, meleeTeam.Count);
+                currentSpellcaster = rng.Next(0, spellTeam.Count);
+
                 // 1. Take a random melee 
                 // 2. Take a random spellcaster
 
                 // 3. Melee attacks spellcaster
-                spellTeam[0].TakeDamage(meleeTeam[0].Attack());
+                spellTeam[currentSpellcaster].TakeDamage(meleeTeam[currentMelee].Attack(), meleeTeam[currentMelee].Name);
 
-
+                if (!spellTeam[currentSpellcaster].IsAlive)
+                {
+                    meleeTeam[currentMelee].WonBattle();
+                    spellTeam.Remove(spellTeam[currentSpellcaster]);
+                    if (spellTeam.Count == 0)
+                    {
+                        Console.WriteLine("Melee Team wins!");
+                        break;
+                    }
+                    else
+                    {
+                        currentSpellcaster = rng.Next(0, spellTeam.Count);
+                    }
+                }
                 // 3.1 Check if character died and remove him from the team
                 // 3.2 If dead, get another character from the team
 
                 // 4. Spellcaster attacks melee
-                meleeTeam[0].TakeDamage(spellTeam[0].Attack());
+                meleeTeam[currentMelee].TakeDamage(spellTeam[currentSpellcaster].Attack(),spellTeam[currentSpellcaster].Name);
 
-
+                if (!meleeTeam[currentMelee].IsAlive)
+                {
+                    spellTeam[currentSpellcaster].WonBattle();
+                    meleeTeam.Remove(meleeTeam[currentMelee]);
+                    if (meleeTeam.Count == 0)
+                    {
+                        Console.WriteLine("Spellcaster Team wins!");
+                        break;
+                    }
+                    else
+                    {
+                        currentMelee = rng.Next(0, meleeTeam.Count);
+                    }
+                }
 
                 // 4.1 Check if character died and remove him from the team
                 // 4.2 If dead, get another character from the team

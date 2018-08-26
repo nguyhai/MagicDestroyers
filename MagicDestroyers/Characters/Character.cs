@@ -166,9 +166,42 @@ namespace MagicDestroyers.Characters
             throw new NotImplementedException();
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, string attackerName)
         {
-            _healthPoints = _healthPoints - damage;
+            // We only want to apply damage if the damage is higher than current defense of the character
+            if (Defend() < damage)
+            {
+                _healthPoints = _healthPoints - damage + Defend();
+
+                if (_healthPoints <= 0)
+                {
+                    _isAlive = false;
+                }
+            }
+            else
+            {
+                Console.WriteLine("No damage dealt!");
+            }
+
+            // If character is dead....
+            if (!IsAlive)
+            {
+                Console.WriteLine($"{_name} received {damage} from {attackerName} damage, and is now dead!");
+            }
+            else
+            {
+                Console.WriteLine($"{_name} received {damage} damage from {attackerName}, and now has {_healthPoints} healthpoints!");
+            }
+        }
+
+        public void WonBattle()
+        {
+            _scores++;
+            // Every 10 scores, the character levels up
+            if(_scores % 10 == 0)
+            {
+                _level++;
+            }
         }
 
         // If we use virtual, we would need default method, which won't work because each class has different types of attacks. In this case, we will use abstract classes for the methods. 
@@ -177,7 +210,7 @@ namespace MagicDestroyers.Characters
 
         public abstract int SpecialAttack();
 
-        public abstract void Defend();
+        public abstract int Defend();
 
         // ----------------------------------------------------------------------------------------------------------------------------------
         // When a class inherits from another class, it inherits all it's members, this includes fields, properties, and methods. It cant inherit constructors, but it can REUSE them using the base keyword.  

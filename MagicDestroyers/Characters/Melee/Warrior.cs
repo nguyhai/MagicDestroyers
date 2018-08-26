@@ -16,11 +16,7 @@ namespace MagicDestroyers.Characters.Melee
         // Static - shared between the instance, accessed from the class. Static variables, static methods, static classes. 
 
         // Constants - Leaving some of the constants here, every character has different constants
-        private const string DefaultName = "Bob";
-        private const int DefaultLevel = 1;
-        private const int DefaultHealthPoints = 120;
-        private const int DefaultAbilityPoints = 10;
-        private const Faction DefaultFaction = Faction.Melee;
+
 
         // We cant use const for objects, so in this case, we can use the readonly keyword
         private readonly Chainlink DefaultBodyArmor = new Chainlink();
@@ -39,12 +35,13 @@ namespace MagicDestroyers.Characters.Melee
         //    //Weapon = new Axe(); // This is how we equip our weapon. We instantiate the object within our constructor, giving our character their weapon and whatever stats it has on it. 
 
         public Warrior()
+            :this(Consts.DefaultName, Consts.DefaultLevel)
         {
 
         }
-        // Constructor chaining here, we take two params, then push it all to the constructor witht he most arguments using the this keyword
+        // Constructor chaining here, we take two params, then push it all to the constructor with he most arguments using the this keyword
         public Warrior(string name, int level)
-            :this(name, level, DefaultHealthPoints, DefaultFaction)
+            :this(name, level, Consts.DefaultHealthPoints, Consts.DefaultFaction)
         {
         }
 
@@ -53,11 +50,14 @@ namespace MagicDestroyers.Characters.Melee
             Name = name;
             Level = level;
             HealthPoints = healthPoints;
-            AbilityPoints = DefaultAbilityPoints;
-            Faction = faction;
+            AbilityPoints = Consts.DefaultAbilityPoints;
+            Faction = Consts.DefaultFaction;
 
             BodyArmor = DefaultBodyArmor;
             Weapon = DefaultWeapon;
+
+            IsAlive = true;
+            Scores = 0;
         }
 
         // Methods ----------------------------------------
@@ -69,12 +69,12 @@ namespace MagicDestroyers.Characters.Melee
 
         public int Execute()
         {
-            throw new NotImplementedException();
+            return Weapon.Damage + 15;
         }
 
-        public void SkinHarden()
+        public int SkinHarden()
         {
-            throw new NotImplementedException();
+            return BodyArmor.ArmorPoints + 5;
         }
 
         // Using the override keyword, we are overriding a virtual method here
@@ -95,9 +95,9 @@ namespace MagicDestroyers.Characters.Melee
             return Execute();
         }
 
-        public override void Defend()
+        public override int Defend()
         {
-            SkinHarden();
+            return SkinHarden();
         }
 
         // Using for example purposes

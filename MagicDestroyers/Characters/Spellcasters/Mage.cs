@@ -71,21 +71,25 @@ namespace MagicDestroyers.Characters.Spellcasters
             Faction = faction;
             BodyArmor = DefaultBodyArmor;
             Weapon = DefaultWeapon;
+
+            IsAlive = true;
+            Scores = 0;
+
         }
 
         public int Fireball()
         {
-            throw new NotImplementedException();
+            return Weapon.Damage + 10;
         }
 
         public int ArcaneWrath()
         {
-            throw new NotImplementedException();
+            return Weapon.Damage + 15;
         }
 
-        public void Meditation()
+        public int Meditation()
         {
-            throw new NotImplementedException();
+            return BodyArmor.ArmorPoints + 5;
         }
 
         // Using override method here. We are overriding virual method in the base class. 
@@ -113,9 +117,9 @@ namespace MagicDestroyers.Characters.Spellcasters
             return ArcaneWrath();
         }
 
-        public override void Defend()
+        public override int Defend()
         {
-            Meditation();
+            return Meditation();
         }
     }
 }
