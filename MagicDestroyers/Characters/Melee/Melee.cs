@@ -2,7 +2,8 @@
 
 namespace MagicDestroyers.Characters.Melee
 {
-    public class Melee : Character
+    // Even if melee is an abstract class, it can inherit from character, even though character is abstract
+    public abstract class Melee : Character
     {
         private int _abilityPoints; 
 
@@ -24,11 +25,6 @@ namespace MagicDestroyers.Characters.Melee
                     throw new ArgumentOutOfRangeException(string.Empty, $"Ability Points cannot be Negative or over 10 for {base.Name}");
                 }
             }
-        }
-
-        public override void Addition(int firstNumber, int secondNumber)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MagicDestroyers.Equipment.Armors
 {
-    public class Armor
+    public abstract class Armor
     {
         private int _armorPoints;
 

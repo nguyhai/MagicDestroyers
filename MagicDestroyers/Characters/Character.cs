@@ -1,4 +1,6 @@
 ﻿using Enumerations;
+using MagicDestroyers.Equipment.Armors;
+using MagicDestroyers.Equipment.Weapons;
 using MagicDestroyers.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MagicDestroyers.Characters
 {
-    public abstract class Character: ICalculator
+    public abstract class Character: IAttack, IDefend
     {
         // Protected access modifier, used to share between base and derived classes. Not for fields, those should be private.
         // Common fields between the characters - This is what we are extacting from the classes we have and putting it here because all the characters have it in common
@@ -17,8 +19,61 @@ namespace MagicDestroyers.Characters
         private string _name;
         private int _level;
         private int _healthPoints;
+        private bool _isAlive;
+        private int _scores;
+
+        private Armor _bodyArmor;
+        private Weapon _weapon;
+
+        public Armor BodyArmor
+        {
+            get
+            {
+                return _bodyArmor;
+            }
+            set
+            {
+                _bodyArmor = value;
+            }
+        }
+
+        public Weapon Weapon
+        {
+            get
+            {
+                return _weapon;
+            }
+            set
+            {
+                _weapon = value;
+            }
+        }
 
         // Any validation here will be the default. If you have different validation for properties (like health for mages), that needs to be in that specific class and overrided. 
+
+        public int Scores
+        {
+            get
+            {
+                return _scores;
+            }
+            set
+            {
+                _scores = value;
+            }
+        }
+        public bool IsAlive
+        {
+            get
+            {
+                return _isAlive;
+            }
+            set
+            {
+                _isAlive = value;
+            }
+        }
+
         public string Name
         {
             get
@@ -106,14 +161,23 @@ namespace MagicDestroyers.Characters
             }
         }
 
-        public virtual void Addition(int firstNumber, int secondNumber)
+        public void Greetings()
         {
             throw new NotImplementedException();
         }
 
+        public void TakeDamage(int damage)
+        {
+            _healthPoints = _healthPoints - damage;
+        }
 
+        // If we use virtual, we would need default method, which won't work because each class has different types of attacks. In this case, we will use abstract classes for the methods. 
 
+        public abstract int Attack();
 
+        public abstract int SpecialAttack();
+
+        public abstract void Defend();
 
         // ----------------------------------------------------------------------------------------------------------------------------------
         // When a class inherits from another class, it inherits all it's members, this includes fields, properties, and methods. It cant inherit constructors, but it can REUSE them using the base keyword.  

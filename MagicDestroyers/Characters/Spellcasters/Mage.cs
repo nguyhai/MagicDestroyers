@@ -8,7 +8,7 @@ using System;
 namespace MagicDestroyers.Characters.Spellcasters
 {
     // You can implement as many interfaces ase you want, but you can only inherit from ONE class. 
-    public class Mage: Spellcaster, ICalculator, ISpellcaster
+    public class Mage: Spellcaster, ISpellcaster
     {
         private int _mana;
         private Spell _mySpell;
@@ -34,33 +34,6 @@ namespace MagicDestroyers.Characters.Spellcasters
 
         private readonly ClothRobe DefaultBodyArmor = new ClothRobe();
         private readonly Staff DefaultWeapon = new Staff();
-
-        private ClothRobe _bodyArmor;
-        private Staff _weapon;
-        
-        public ClothRobe BodyArmor
-        {
-            get
-            {
-                return _bodyArmor;
-            }
-            set
-            {
-                _bodyArmor = value;
-            }
-        }
-
-        public Staff Weapon
-        {
-            get
-            {
-                return _weapon;
-            }
-            set
-            {
-                _weapon = value;
-            }
-        }
 
         public int Mana
         {
@@ -98,24 +71,14 @@ namespace MagicDestroyers.Characters.Spellcasters
             Faction = faction;
             BodyArmor = DefaultBodyArmor;
             Weapon = DefaultWeapon;
-
-            if (Faction == Faction.Spellcaster)
-            {
-                HealthPoints = 120;
-            }
-            else if (Faction == Faction.Spellcaster)
-            {
-                HealthPoints = 100;
-            }
-
         }
 
-        public void Fireball()
+        public int Fireball()
         {
             throw new NotImplementedException();
         }
 
-        public void ArcaneWrath()
+        public int ArcaneWrath()
         {
             throw new NotImplementedException();
         }
@@ -134,20 +97,25 @@ namespace MagicDestroyers.Characters.Spellcasters
 
         // In the implementing class, it cares about HOW it happens, and this is where we put our implementation. 
         // It expects 2 numbers. The interface doesn't care about "How" this happens. It just care about telling the class to take the two numbers and do something with it (in this case, "Addition" as the interface name should define what it does). 
-        public override void Addition(int firstNumber, int secondNumber)
+        public void CastSpell(Character character)
         {
-            int sum = firstNumber + secondNumber;
-            int modifiedSum = sum + 123;
-            Console.WriteLine(modifiedSum - 123);
+            character.HealthPoints = character.HealthPoints - _mySpell.Damage;
+            _mana = _mana - _mySpell.ManaCost;
         }
 
-
-        
-        public void CastSpell(Warrior warrior)
+        public override int Attack()
         {
-            // The warrior's healthpoints are subtracted by the spelldamage. 
-            warrior.HealthPoints = warrior.HealthPoints - MySpell.Damage;
-            _mana = Mana - MySpell.ManaCost;
+            return Fireball();
+        }
+
+        public override int SpecialAttack()
+        {
+            return ArcaneWrath();
+        }
+
+        public override void Defend()
+        {
+            Meditation();
         }
     }
 }

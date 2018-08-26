@@ -1,7 +1,10 @@
 ﻿using Enumerations;
+using MagicDestroyers.Characters;
 using MagicDestroyers.Characters.Melee;
 using MagicDestroyers.Characters.Spellcasters;
+using MagicDestroyers.Interfaces;
 using System;
+using System.Collections.Generic;
 
 namespace MagicDestroyers
 {
@@ -9,46 +12,71 @@ namespace MagicDestroyers
     {
         static void Main()
         {
-            //Warrior goodGuy = new Warrior();
-            //Warrior badGuy = new Warrior();
+            bool gameOver = false;
 
-            //try
-            //{
+            List<Character> characters = new List<Character>()
+            {
+                new Warrior(),
+                //new Knight(),
+                //new Assassin(),
+                new Mage(),
+                //new Necromancer(),
+                //new Druid()
+                new Mage(),
+                new Mage(),
+                new Mage(),
+                new Warrior(),
+                new Warrior(),
 
-            //}
-            //catch (ArgumentOutOfRangeException ex) // Here is where we catch the exception that we were expecting. Gave it variable ex. This ArgumentOutOfRange exception ties to what was in our setter
-            //{
-            //    Console.WriteLine(ex.Message);
-            //}
+            
+            };
 
-            // Instantiating our objects, if no value is provided, default values are used (these are taken in from the constructor)
+            // Creating two lists for each team
+            List<Melee> meleeTeam = new List<Melee>();
+            List<Spellcaster> spellTeam = new List<Spellcaster>();
 
-            Warrior warrior = new Warrior("Hai", 10, 150, Faction.Melee);
-            //warrior.Move(500);
+            foreach (var character in characters)
+            {
+                if (character is Melee)
+                {
+                    meleeTeam.Add((Melee)character);
+                }
+                else if(character is Spellcaster)
+                {
+                    spellTeam.Add((Spellcaster)character);
+                }
+            }
 
-            Mage mage = new Mage();
-            //mage.Move(500);
+            while (!gameOver)
+            {
+                // 1. Take a random melee 
+                // 2. Take a random spellcaster
 
-            //Assassin assasin = new Assassin("Tester1", 20);
-
-            //warrior.Addition(4, 5);
-
-            //mage.Addition(10, 10);
-
-            Console.WriteLine($"The warrior has {warrior.HealthPoints} health");
-            Console.WriteLine($"The mage has {mage.Mana} mana.");
-
-            Console.WriteLine("The mage casts FIRE SPELL");
-            mage.CastSpell(warrior);
-
-            Console.WriteLine($"The warrior has {warrior.HealthPoints} health");
-            Console.WriteLine($"The mage has {mage.Mana} mana.");
+                // 3. Melee attacks spellcaster
+                spellTeam[0].TakeDamage(meleeTeam[0].Attack());
 
 
-            //Tools.ColorfulWriteLine(warrior.AbilityPoints.ToString(), ConsoleColor.DarkCyan);
+                // 3.1 Check if character died and remove him from the team
+                // 3.2 If dead, get another character from the team
+
+                // 4. Spellcaster attacks melee
+                meleeTeam[0].TakeDamage(spellTeam[0].Attack());
 
 
+
+                // 4.1 Check if character died and remove him from the team
+                // 4.2 If dead, get another character from the team
+
+                // 5. If no characters are alive from either of the teams, gameOver = true
+
+            }
 
         }
+
+        // For the following, warrior uses Attack method (since we cannot access the warrior class directly). It goes to the Character class.
+        // When it goes to the character class, it sees that the attack method is an abstract class. 
+        // Because it is an abstract class, it will then look for the SPECIFIC IMPLEMENTATION in the derived class.
+        // It will see the Strike() method and execute it. 
+        // warrior.Attack(mage);
     }
 }

@@ -22,44 +22,13 @@ namespace MagicDestroyers.Characters.Melee
         private const int DefaultAbilityPoints = 10;
         private const Faction DefaultFaction = Faction.Melee;
 
-        // Extracted common properties to higher abstract level
-
         // We cant use const for objects, so in this case, we can use the readonly keyword
         private readonly Chainlink DefaultBodyArmor = new Chainlink();
         private readonly Axe DefaultWeapon = new Axe();
 
-        private Chainlink _bodyArmor;
-        private Axe _weapon;
-
-        // Properties ----------------------
-
         // Think of it like a barrier, so that the outside cant just go and change the value of _height directly. Get is Read, Set is Write
         // Do we always need to do this? No. Properties, usually for external. 
         // C Sharp auto creates backing fields if you use auto properties. 
-
-        public Chainlink BodyArmor
-        {
-            get
-            {
-                return _bodyArmor;
-            }
-            set
-            {
-                _bodyArmor = value;
-            }
-        }
-
-        public Axe Weapon
-        {
-            get
-            {
-                return _weapon;
-            }
-            set
-            {
-                _weapon = value;
-            }
-        }
 
         // Constructors -----------------------------------
 
@@ -69,8 +38,10 @@ namespace MagicDestroyers.Characters.Melee
         //{
         //    //Weapon = new Axe(); // This is how we equip our weapon. We instantiate the object within our constructor, giving our character their weapon and whatever stats it has on it. 
 
-        // Our default constructor is in the character class. 
+        public Warrior()
+        {
 
+        }
         // Constructor chaining here, we take two params, then push it all to the constructor witht he most arguments using the this keyword
         public Warrior(string name, int level)
             :this(name, level, DefaultHealthPoints, DefaultFaction)
@@ -87,25 +58,16 @@ namespace MagicDestroyers.Characters.Melee
 
             BodyArmor = DefaultBodyArmor;
             Weapon = DefaultWeapon;
-
-            if (Faction == Faction.Melee)
-            {
-                HealthPoints = 120;
-            }
-            else if (Faction == Faction.Melee)
-            {
-                HealthPoints = 100;
-            }
         }
 
         // Methods ----------------------------------------
 
-        public void Strike()
+        public int Strike()
         {
-            throw new NotImplementedException();
+            return Weapon.Damage + 10;
         }
 
-        public void Execute()
+        public int Execute()
         {
             throw new NotImplementedException();
         }
@@ -122,10 +84,26 @@ namespace MagicDestroyers.Characters.Melee
             Console.WriteLine("I just moved 10 times, I am a warrior");
         }
 
-        // You can right click the interface, and implement it
-        public override void Addition(int firstNumber, int secondNumber)
+        // These next 3 are the implemented abstract class. 
+        public override int Attack()
         {
-            Console.WriteLine(firstNumber + secondNumber);
+            return Strike();
+        }
+
+        public override int SpecialAttack()
+        {
+            return Execute();
+        }
+
+        public override void Defend()
+        {
+            SkinHarden();
+        }
+
+        // Using for example purposes
+        public void Addition(int firstNumber, int secondNumber)
+        {
+            throw new NotImplementedException();
         }
     }
 }

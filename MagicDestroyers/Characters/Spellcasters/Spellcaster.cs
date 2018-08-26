@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MagicDestroyers.Characters.Spellcasters
 {
-    public class Spellcaster : Character
+    public abstract class Spellcaster : Character
     {
         private int _manaPoints;
 
@@ -30,9 +30,5 @@ namespace MagicDestroyers.Characters.Spellcasters
             }
         }
 
-        public override void Addition(int firstNumber, int secondNumber)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
